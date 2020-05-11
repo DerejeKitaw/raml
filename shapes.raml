@@ -1,0 +1,23 @@
+#%RAML 1.0 Library
+# usage: Data shapes for the HTTP API
+
+types:
+  NewPersonData:
+    # displayName: New Person Data
+    properties:
+      title?:
+        displayName: Title
+        enum: [mr, mrs, ms, dr]
+      given_name:
+        displayName: Given Name
+      family_name:
+        displayName: Family Name
+      gender:
+        displayName: Gender
+        enum: [female, male] 
+      vat_id?:
+        displayName: Vat Id
+      birth_date: 
+        displayName: Birth Date
+        type: date-only
+        description: "[yyyy-MM-dd]"
