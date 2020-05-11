@@ -1,0 +1,20 @@
+#%RAML 1.0
+baseUri: https://anypoint.mulesoft.com/mocking/api/v1/links/c16d3a17-5722-4204-9535-28058e063a1d/ # 
+title: ACME Banking HTTP API
+mediaType: 
+  - application/json
+uses:
+  shapes: dataTypes/shape.raml
+/customers:
+  # displayName:  Customer Resource   
+  /corporate:
+    post:
+      description: Customer data created correctly for an Organization
+      body: shapes.NewPersonData
+  /commercial:
+    post:
+      description: Customer data created correctly for a Person
+      body: shapes.NewPersonData
+        
+
+
