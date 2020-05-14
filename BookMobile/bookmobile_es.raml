@@ -1,4 +1,6 @@
-#%RAML 1.0
+#%RAML 1.0 Overlay
+extends: bookmobile.raml
+
 title: book store API
 
 uses:
@@ -6,7 +8,7 @@ uses:
   shapes: dataTypes/shapes.raml
 resourceTypes:
   resourceCollection: !include resourceTypes/ourCollection.raml
- 
+
 /books:
   type:
     resourceCollection:

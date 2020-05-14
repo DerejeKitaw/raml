@@ -1,0 +1,30 @@
+#%RAML 1.0 ResourceType
+usage: Apply this resource type to any resource that returns a collection of members.
+# uses:
+#   traits: ../traits/traits.raml
+
+get:
+    description: Rerive all <<resourcePathName>> 
+    is: <<queryTrait>>
+    body:
+      application/json:
+        type: <<request-type>>[]
+        example:
+          <<example-get-book-with-id>>
+    responses:
+      200:
+        body:
+          application/json:
+            example: <<example-get-book-with-id>>    
+post:
+  description: Create <<resourcePathName>> 
+  is: traits.bookSort
+  body:
+    application/json:
+      example:
+        <<example-post-book-with-no-id>>
+  # responses:
+  #   201:
+  #     body:
+  #       application/json:
+  #         example: !include examples/bookExampleWithNoID.raml   
