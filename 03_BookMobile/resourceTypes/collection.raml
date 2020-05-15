@@ -1,0 +1,36 @@
+#%RAML 1.0 ResourceType
+usage: Apply this resource type to any resource that returns a collection of members.
+uses:
+  traits:  ../traits/traits.raml
+get:
+  description: Returns a collection of <<resourcePathName>>
+  is: [traits.sortable, traits.accessable]
+  responses:
+    200:
+      body:
+        application/json:
+          type: <<request-type>>[]
+          example: <<get-request-example>>
+post:
+  description: Create a collection of <<resourcePathName>>
+  is: [traits.sortable, traits.accessable]
+  responses:
+    201:
+      body:
+        application/json:
+          type: <<response-type>>[]
+          example: <<post-response-example>>
+put:
+  description: Test for just to see collection
+  is: [traits.sortable]
+  responses:
+    201:
+      body:
+        application/json:
+          type: <<hiwi-type>>[]
+          example:
+            <<hiwi-put-example>>
+
+
+          
+    

@@ -1,0 +1,30 @@
+#%RAML 1.0
+baseUri: https://anypoint.mulesoft.com/mocking/api/v1/links/e874ff09-f24d-4ae8-b1c9-b5859d4e462e/ # 
+
+title: e-BookMobile API
+mediaType: 
+  - application/json
+uses: 
+  shapes: dataTypes/shapes.raml
+
+resourceTypes:
+  collection: !include resourceTypes/collection.raml
+
+/books:
+  type:
+    collection:
+      request-type: shapes.RequestBookData
+      get-request-example: !include examples/bookExampleWithID.raml
+      hiwi-type: shapes.RequestBookData
+      hiwi-put-example: !include examples/bookExampleWithID.raml
+
+      response-type: shapes.ResponseBookData
+      post-response-example: !include examples/bookExampleWithNoID.raml
+  
+  # get:
+  #   description: Retrieve a specific book title
+  #   body: [shapes.BookData, shapes.BookResponse]
+  /{bookTitle}:
+    get:
+      body: [shapes.BookData, shapes.BookResponse]
+
