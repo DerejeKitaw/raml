@@ -1,0 +1,53 @@
+#%RAML 1.0
+title: book store API
+
+uses:
+  traits: traits/traits.raml
+  shapes: dataTypes/shapes.raml
+resourceTypes:
+  resourceCollection: !include resourceTypes/ourCollection.raml
+ 
+/books:
+  type:
+    resourceCollection:
+      queryTrait: [traits.bookSort]
+      request-type: shapes.RequestBookData
+      example-get-book-with-id: !include examples/book/bookExampleWithID.raml
+      example-post-book-with-no-id: !include examples/book/bookExampleWithNoID.raml
+
+  /{bookTitle}:
+    get:
+      is: [ traits.bookPage]
+      body:
+        application/json:
+          example:
+            !include examples/book/bookExampleWithID.raml
+    post:
+      is: traits.bookSort
+      body:
+        application/json:
+          example:
+            !include examples/book/bookExampleWithID.raml
+      responses:
+        201:
+          body:
+            application/json:
+              example: !include examples/book/bookExampleWithNoID.raml 
+    /{isbn}:
+       type:
+        resourceCollection:
+          queryTrait: []
+          request-type: shapes.RequestBookData
+          example-get-book-with-id: !include examples/book/bookExampleWithID.raml
+          example-post-book-with-no-id: !include examples/book/bookExampleWithNoID.raml
+/account:
+   type:
+    resourceCollection:
+      queryTrait: [traits.bookSort]
+      request-type: shapes.RequestBookData
+      example-get-book-with-id: !include examples/book/bookExampleWithID.raml
+      example-post-book-with-no-id: !include examples/book/bookExampleWithNoID.raml   
+
+
+
+

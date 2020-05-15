@@ -1,0 +1,18 @@
+#%RAML 1.0 Extension
+extends: ../bookmobile.raml
+
+title: fooApi
+
+uses:
+  traits: ../traits/traits.raml
+  shapes: ../dataTypes/shapes.raml
+resourceTypes:
+  resourceCollection: !include ../resourceTypes/ourCollection.raml
+
+/foo:
+  type:
+    resourceCollection:
+      queryTrait: [traits.bookSort]
+      request-type: shapes.RequestBookData
+      example-get-book-with-id: !include ../examples/book/bookExampleWithID.raml
+      example-post-book-with-no-id: !include ../examples/book/bookExampleWithNoID.raml
