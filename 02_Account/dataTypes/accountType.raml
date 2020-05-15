@@ -1,0 +1,17 @@
+#%RAML 1.0 DataType
+type: object
+properties: 
+  id: string
+  firstName: 
+    type: string
+    required: false
+  lastName:
+    type: string
+    required: false
+  address: string
+  postal: string
+  country: 
+    # pattern: /^note\d+$/
+  creationDate: datetime
+  accountType: string
+  miles: integer
