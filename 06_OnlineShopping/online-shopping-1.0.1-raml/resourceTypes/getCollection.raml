@@ -1,0 +1,11 @@
+#%RAML 1.0 ResourceType
+get:
+  description: Retrieve <<resourcePathName>>
+  responses:
+    200:
+      body:
+        application/json:
+          type: <<response-get-type>>
+          examples:
+            output: <<response-get-examples>>
+  is: [<<error-trait-get>>]

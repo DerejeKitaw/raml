@@ -1,0 +1,66 @@
+#%RAML 1.0
+baseUri: https://anypoint.mulesoft.com/mocking/api/v1/links/b8bef212-340a-44be-97f3-8e88501aede3/ # 
+title: online-shoping API
+  
+uses:
+  shopping: /Libraries/shoppingLibrary.raml
+/users:
+  type:
+    shopping.collection: 
+      request-post-type: shopping.users
+      request-post-example: !include /examples/userExample.raml 
+      response-post-type: shopping.userID
+      response-post-example: !include /examples/userIDExample.raml
+      authenticate-trait-post: shopping.authenticateTrait
+      error-trait-post: shopping.errorTrait
+      response-get-type: shopping.users[]
+      response-get-examples: !include /examples/usersExamples.raml
+      error-trait-get: shopping.errorTrait      
+/users/{id}:
+  type:
+    shopping.getCollection:
+      response-get-type: shopping.users
+      response-get-examples: !include /examples/userExample.raml
+      error-trait-get: shopping.errorTrait  
+/products:
+  type:
+    shopping.getCollection:
+      response-get-type: shopping.products[]
+      response-get-examples: !include /examples/productsExamples.raml
+      error-trait-get: shopping.errorTrait  
+/products/{id}:
+  type:
+    shopping.getCollection:
+      response-get-type: shopping.products
+      response-get-examples: !include /examples/productExample.raml
+      error-trait-get: shopping.errorTrait  
+/categories:
+  type:
+    shopping.getCollection:
+      response-get-type: shopping.categories[]
+      response-get-examples: !include /examples/categoriesExamples.raml
+      error-trait-get: shopping.errorTrait  
+/categories/{id}:
+  type:
+    shopping.getCollection:
+      response-get-type: shopping.categories
+      response-get-examples: !include /examples/categoryExample.raml
+      error-trait-get: shopping.errorTrait  
+/orders:
+  type:
+    shopping.getCollection:
+      response-get-type: shopping.orders[]
+      response-get-examples: !include /examples/ordersExamples.raml
+      error-trait-get: shopping.errorTrait        
+/orders/{id}:
+  type:
+    shopping.collection: 
+      request-post-type: shopping.orderRequests
+      request-post-example: !include /examples/orderRequestExample.raml 
+      response-post-type: shopping.orders
+      response-post-example: !include /examples/orderExample.raml
+      authenticate-trait-post: 
+      error-trait-post: shopping.errorTrait
+      response-get-type: shopping.orders[]
+      response-get-examples: !include /examples/ordersExamples.raml
+      error-trait-get: shopping.errorTrait      

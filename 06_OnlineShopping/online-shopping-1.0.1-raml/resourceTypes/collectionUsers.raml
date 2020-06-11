@@ -1,0 +1,11 @@
+#%RAML 1.0 ResourceType
+type:
+  shopping.collection: 
+    request-post-type: shopping.users
+    request-post-example: !include ../examples/userExample.raml 
+    response-post-type: shopping.userID
+    response-post-example: !include ../examples/userIDExample.raml
+    error-trait-post: shopping.errorTrait
+    response-get-type: shopping.users[]
+    response-get-examples: !include ../examples/usersExamples.raml
+    error-trait-get: shopping.errorTrait 

@@ -1,0 +1,11 @@
+#%RAML 1.0 ResourceType
+type:
+  shopping.collection: 
+    request-post-type: shopping.orderRequests
+    request-post-example: !include ../examples/orderRequestExample.raml 
+    response-post-type: shopping.orders
+    response-post-example: !include ../examples/orderExample.raml
+    error-trait-post: shopping.errorTrait
+    response-get-type: shopping.orders[]
+    response-get-examples: !include ../examples/ordersExamples.raml
+    error-trait-get: shopping.errorTrait      

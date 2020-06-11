@@ -1,0 +1,28 @@
+#%RAML 1.0 ResourceType
+# is: [<<error-trait-post>>, <<authenticate-trait-post>>]
+post:
+  securedBy: auth
+  description: Create <<resourcePathName>>
+  body:
+    application/json:
+      type: <<request-post-type>>
+      examples:
+        input: <<request-post-example>>
+  responses:
+    201:
+      body:
+        application/json:
+          type: <<response-post-type>>
+          examples:
+            output: <<response-post-example>>
+  is: [<<error-trait-post>>, <<authenticate-trait-post>>]
+get:
+  description: Retrieve all <<resourcePathName>>  
+  responses:
+    200:
+      body:
+        application/json:
+          type: <<response-get-type>>
+          examples:
+            output: <<response-get-examples>>
+  is: <<error-trait-get>>

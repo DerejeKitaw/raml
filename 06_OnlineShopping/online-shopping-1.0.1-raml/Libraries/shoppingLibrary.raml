@@ -1,0 +1,29 @@
+#%RAML 1.0 Library
+usage: apply this type for the resources of online-shopping.
+types:
+  categories: !include ../dataTypes/categories.raml
+  orders: !include ../dataTypes/orders.raml
+  products: !include ../dataTypes/products.raml
+  userID: !include ../dataTypes/userID.raml
+  users: !include ../dataTypes/users.raml
+  orderRequests: !include ../dataTypes/orderRequests.raml
+
+resourceTypes:
+  collection: !include /resourceTypes/collection.raml
+  getCollection: !include /resourceTypes/getCollection.raml
+
+  collectionOrders: !include /resourceTypes/collectionOrders.raml
+  collectionOrdersId: !include /resourceTypes/collectionOrdersId.raml
+  collectionUsers: !include /resourceTypes/collectionUsers.raml
+  collectionUsersId: !include /resourceTypes/collectionUsersId.raml
+  collectionCategories: !include /resourceTypes/collectionCategories.raml
+  collectionCategoriesId: !include /resourceTypes/collectionCategoriesId.raml
+  collectionProducts: !include /resourceTypes/collectionProducts.raml
+  collectionProductsId: !include /resourceTypes/collectionProductsId.raml
+  
+
+securitySchemes:
+  auth: !include /securitySchemes/securityScheme.raml
+
+traits:
+  errorTrait: !include /traits/errorTrait.raml
