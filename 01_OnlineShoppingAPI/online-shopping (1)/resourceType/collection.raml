@@ -1,0 +1,26 @@
+#%RAML 1.0 ResourceType
+
+get:
+  description: Retrive all <<resourcePathName>>
+  responses:
+    200:
+      body:
+        application/json:
+          example: <<get-response-examples>>
+
+post:
+  description: Create <<resourcePathName>>
+  body:
+    application/json:
+      example:  <<post-request-example>>
+
+  responses:
+    201:
+      body:
+        application/json:
+          example:  <<post-response-example>>
+            
+        
+
+            
+        

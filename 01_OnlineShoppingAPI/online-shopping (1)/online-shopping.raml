@@ -1,0 +1,51 @@
+#%RAML 1.0
+baseUri: https://anypoint.mulesoft.com/mocking/api/v1/links/f3089ccf-18e7-4da7-9b1f-3806104fc542/ # 
+title: online-shopping
+
+types:
+  registrationType: !include dataTypes/registrationType.raml
+
+resourceTypes:
+  collection: !include resourceType/collection.raml
+  getCollection: !include resourceType/getCollection.raml
+  getByIdCollection: !include resourceType/getByIdCollection.raml
+  postCollection: !include resourceType/postCollection.raml
+         
+/users:
+  type:
+    collection:
+      get-response-examples: !include examples/users/usersExampleWithId.raml
+      post-request-example: !include examples/users/registrationExample.raml
+      post-response-example: !include examples/users/registrationResponseExample.raml
+  /{id}:
+    type:
+      getByIdCollection:
+        get-by-id-response-example: !include examples/products/productExampleWithId.raml
+
+/products:
+  type:
+    getCollection:
+      get-response-examples: !include examples/products/productsExampleWithId.raml
+  /{id}:
+    type:
+      getByIdCollection:
+        get-by-id-response-example: !include examples/products/productExampleWithId.raml
+/categories:
+  type:
+    getCollection:
+      get-response-examples: !include examples/catagories/catagoriesExample.raml
+/category/{id}:
+    type:
+      getByIdCollection:
+        get-by-id-response-example: !include examples/catagories/catagoryExample.raml
+   
+/order:
+  type:
+    getCollection:
+      get-response-examples: !include examples/products/productsExampleWithId.raml
+  /{id}:
+    type:
+      getByIdCollection:
+        get-by-id-response-example: !include examples/products/productExampleWithId.raml     
+  
+          

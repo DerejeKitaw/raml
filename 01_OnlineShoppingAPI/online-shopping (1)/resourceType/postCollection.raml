@@ -1,0 +1,15 @@
+#%RAML 1.0 ResourceType
+
+post:
+  description: Create <<resourcePathName>>
+  body:
+    application/json:
+      example:  <<post-request-example>>
+
+  responses:
+    201:
+      body:
+        application/json:
+          example:  <<post-response-example>>
+            
+        

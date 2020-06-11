@@ -1,0 +1,28 @@
+#%RAML 1.0 Trait
+usage: Apply this to a method that support sorting.
+queryParameters:
+      author:
+          displayName: Author
+          type: string
+          description: An author's full name
+          example: Dirara Debesai
+          required: true
+      publicationYear:
+          displayName: Pub Year
+          type: number
+          description: The year released for the first time in the US
+          example: 1984
+          required: false
+      rating:
+          displayName: Rating
+          type: number
+          description: Average rating (1-5) submitted by users
+          example: 3.14
+          required: false
+      isbn: 
+        displayName: ISBN
+        type: string
+        description: Standard ISBN is 10 or 13 digit
+        example: sdg436564egbv5
+        required: false
+        minLength: 10

@@ -1,0 +1,88 @@
+#%RAML 1.0 
+
+baseUri: https://anypoint.mulesoft.com/mocking/api/v1/links/4d6036e6-7b58-46e8-936d-0187bfa1fadd/ # 
+title: Accounts API
+version: 1.0
+
+types: 
+  Account: !include dataTypes/accountType.raml
+  AccountWihtNoId: !include dataTypes/accountTypeWithNoId.raml
+traits:
+  response: !include traits/response.raml
+
+/accounts:
+  get:
+    # is: [Required]
+    description: Retrieves accounts based on the given query 
+    headers:
+      Requester-ID:
+        description: id of the person requesting the accounts information. Id should be a string
+        # required: false  # default is true
+        type: number
+    queryParameters:
+      country:
+        required: false
+        type: string
+      name:
+        required: false
+        type: string
+      type:
+        # required: false
+        type: string
+        enum: ["business","personal"]
+    responses:
+      200:
+        body:
+          application/json:
+            type: Account[]
+            example:
+              value: [{"id": "1",
+                      "firstName": "Mekeb",
+                      "MiddleName": "TheBest",
+                      "lastName": "Smith",
+                      "address": "1002 Main Street, Springfield TX",
+                      "postal": "77002",
+                      "country": "USA",
+                      "creationDate": "2016-01-04T12:48:19+00:00",
+                      "accountType": "personal",
+                      "miles": 8492},{"id": "2",
+                      "firstName": "Annabelle",
+                      "lastName": "Simpson",
+                      "address": "20230 Boobear Blvd, Los Angeles CA",
+                      "postal": "94201",
+                      "country": "USA",
+                      "creationDate": "2017-04-30T14:12:25+00:00",
+                      "accountType": "personal",
+                      "miles": 61844}]
+    is:
+      - response:
+        
+  post:
+    description: Creates new accounts based on a given array of Account objects.
+    headers:
+      Requester-ID:
+        description: id of the person requesting the accounts information
+    body:
+      application/json:
+        type: AccountWihtNoId[]
+        example: !include examples/accountsExampleWithNoID.raml
+
+    responses:
+      201:
+        description: Account is created successfully
+        body:
+          application/json:
+            example:
+              value: {"message": "Accounts uploaded (but not really)." }
+      400:
+        description:  Invalid input.
+        body:
+          application/json:
+            example:
+              value: {"message": "Error creating accounts. Please check the JSON object and make sure it's valid."}
+   
+
+
+
+    
+    

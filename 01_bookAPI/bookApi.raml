@@ -1,0 +1,98 @@
+#%RAML 1.0
+baseUri: https://anypoint.mulesoft.com/mocking/api/v1/links/b7ce28d1-98f9-4371-9b7e-f9496c03bc7d/ # 
+
+title: e-BookMobile API
+/users:
+  /authors:
+    /{authorname}:
+/books:
+  get:
+    description: Retrieve a specific book title
+    queryParameters:
+      author:
+          displayName: Author
+          type: string
+          description: An author's full name
+          example: Dirara Debesai
+          required: true
+      publicationYear:
+          displayName: Pub Year
+          type: number
+          description: The year released for the first time in the US
+          example: 1984
+          required: false
+      rating:
+          displayName: Rating
+          type: number
+          description: Average rating (1-5) submitted by users
+          example: 3.14
+          required: false
+      isbn: 
+        displayName: ISBN
+        type: string
+        description: Standard ISBN is 10 or 13 digit
+        example: sdg436564egbv5
+        required: false
+        minLength: 10
+       
+  put:
+
+  post:
+  /{bookTitle}:
+    get:
+      queryParameters:
+        author:
+          displayName: Author
+          type: string
+          description: An author's full name
+          example: Dirara Debesai
+          required: true
+        publicationYear:
+          displayName: Pub Year
+          type: number
+          description: The year released for the first time in the US
+          example: 1984
+          required: false
+        rating:
+          displayName: Rating
+          type: number
+          description: Average rating (1-5) submitted by users
+          example: 3.14
+          required: false
+        isbn: 
+          displayName: ISBN
+          type: number
+          description: The year released for the first time in the US
+          example: 1984
+          required: false
+      responses:
+        200:
+          body:
+            application/json:
+              example:
+                {
+                  "data": {
+                    "id": "SbBGk",
+                    "title": "Stiff: The Curious Lives of Human Cadavers",
+                    "description": null,
+                    "datetime": 1341533193,
+                    "genre": "science",
+                    "author": "Mary Roach",
+                    "link": "http://e-bookmobile.com/books/Stiff"
+                  },
+                  "success": true,
+                  "status": 200
+                }
+    post:
+    put:
+      queryParameters:
+        access_token:
+          displayName: Access Token 
+          type: string
+          description:  Token giving you permission to make call
+          required: true
+    delete:
+    /author:
+      get:
+    /pupublisher:
+      get:
