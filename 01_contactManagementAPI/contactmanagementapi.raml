@@ -1,0 +1,57 @@
+#%RAML 1.0
+baseUri: https://anypoint.mulesoft.com/mocking/api/v1/links/3a022d40-272e-40ba-b5f7-1b4ad69c3076/ # 
+title: Contact Management API
+
+traits:
+  errorResponse: !include /traits/errorTrait.raml 
+
+/contacts:
+  displayName: Contact management API.
+  get:
+    description: Retrive all contacts.
+    responses:
+      200:
+        body:
+          application/json:
+            example: !include examples/contactsWithIdExamples.json
+    is:
+      - errorResponse
+  post:
+    description: Create new contact.
+    body:
+      application/json:
+        example: !include examples/contactWithOutIdExample.json
+    responses:
+      201:
+        body:
+          application/json:
+            example: !include examples/contactWithIdExample.json
+    is:
+      - errorResponse
+  put:
+    description: Update contact.
+    body:
+      application/json:
+        example: !include examples/contactWithIdExample.json
+
+    responses:
+      204:
+        body:
+          application/json:
+            example: {"message": "Resource updated (but not really)."}
+    is:
+      - errorResponse
+  delete:
+    description: Delete contact.
+    responses:
+      200:
+        body:
+          application/json:
+            example: {"message": "Resource deleted succussfully  (but not really)."}
+    is:
+      - errorResponse
+              
+        
+    
+          
+      
